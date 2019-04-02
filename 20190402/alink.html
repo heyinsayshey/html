@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- WebContent/20190402/alink.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>하이퍼링크 문자 꾸미기</title>
+<style type="text/css">
+	td,body{/*td, body의 태그 둘 다 적용*/
+		margin:0;
+		color:#A9E2F3;
+		font-size:10pt;
+		padding-left:20px;
+		line-height:25pt;
+	}
+	a{
+		text-decoration: none;
+		color:#F5A9D0;
+		font-size: 20px;
+	}
+	/*hover : 마우스가 영역내부에 들어오는 경우
+	  link : a 태그의 기본 설정. 방문한 적이 없는 초기상태.
+	  visited : 한번이라도 방문한 적이 있는 상태
+	  active : 마우스가 클릭 되었을 때(누르고 있는 상태)
+	  
+	  */
+	a:hover{
+		color:blue;
+	}
+	a:link{
+		color:cyan;
+	}
+	a:visited{
+		color :red;
+	}
+	a:active{
+		color :yellow;
+	}
+	/* a 태그의 class 속성이 default 인 경우 방문한 사이트의 색상을 green으로 설정하기*/
+	a.default:visited{
+		color:green;
+	}
+	/* a 태그의 class 속성이 color인 경우 
+	마우스 영역에 들어왔을 경우 green 색으로 설정하기*/
+	a.color:hover{
+		color:green;
+	}
+	/* a 태그의 class 속성이 default 인 경우
+	밑줄이 표시되도록 설정하기*/
+	a.default{
+		text-decoration:underline;
+	}
+	h1.a1{
+		color:red;
+	}
+	h1.b1{
+		background-color:black;
+	}
+</style>
+</head>
+<body>
+<table width="500" align="center" border="0">
+	<tr valign="top"><td>마우스를 올리면...<hr><b>기본값</b><br>
+	<a href="http://www.naver.com" class="default">네이버</a>
+	<a href="http://www.daum.net" class="default">다음</a>
+	<a href="http://www.google.com" class="default">구글</a>
+	<hr>
+	<a href="http://www.naver.com" class="color">네이버</a>
+	<a href="http://www.daum.net" class="color">다음</a>
+	<a href="http://www.google.com" class="color">구글</a>
+	</td></tr>
+</table>
+<!-- 문제 : h1 태그의 class 속성이 a1인 경우 글자의 색을 빨강색으로,
+class 속성이 b1인경우 배경색을 검정색으로 설정하기 -->
+<h1 class="a1 b1">class 속성=a1</h1><!-- a1,b1의 속성을 다 가진다. -->
+<h1 class="b1">class 속성=a2</h1>
+<h1 class="a1">class 속성=a3</h1>
+</body>
+</html>
