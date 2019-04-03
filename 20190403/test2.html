@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>구조 선택자 문제</title>
+<!-- 주의사항만 빨강색으로 출력하기, 나머지는 주황색으로 출력하기. -->
+<style>
+	*{color:blue;}
+	li:first-child,li:first-child a{color:red;}
+	/* li > a:first-child : li밑의 a는 다 첫 자식이므로 전체가 다 바뀌게 된다.*/
+</style>
+</head>
+<body>
+<ul>
+	<li><a href="#">주의사항</a>
+	<li><a href="#">1. ###주의하기</a>
+	<li><a href="#">2. @@@주의하기</a>
+	<li><a href="#">3. !!!주의하기</a>
+</ul>
+</body>
+</html>

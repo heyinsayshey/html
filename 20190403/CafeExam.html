@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- CafeExam20190403 -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>document.write 함수 예제 : 계산하기</title>
+</head>
+<body>
+<script type="text/javascript">
+	function getInt() {
+		return Math.floor(Math.random()*1000)%10;
+	}
+	var op = new Array("+","-","*","/");
+	function getOp(){
+		return op[Math.floor(Math.random()*4)];
+	}
+	var tcnt=0; var cnt=0;
+	ask = prompt("맞추실 문제의 개수를 입력하세요.",0);
+	for(i=1;i<=ask;i++){
+		str = getInt() + getOp() + getInt();
+		ans = prompt(str+"= 식의 정답을 입력하세요.",0);
+		res = eval(str);
+		
+		if(res!=ans){
+			document.write("입력한 값은 " + ans + " 입니다.");
+			document.write("<font color='red' size='5'>"+"틀렸습니다. </font>");
+			document.write(str+"="+res+"입니다.<br>");
+		}else {
+			document.write("<font color='blue' size='7'> " + "정답입니다.</font><br>");
+			cnt++;
+		}
+	}
+	document.write(ask+"문제 중 총 "+cnt+"개를 맞추셨습니다.");
+		
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- /Webcontent/20190403/cssstate2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>상태 선택자 : 구조 선택자 예제</title>
+<style type="text/css">
+	ul{overflow : hidden;}
+	/* float : 태그 순서대로 왼쪽에 가서 붙는다.
+	   border-radius : 왼쪽 위 모서리부터 시계방향으로 
+	   	
+	*/
+	li {list-style:none; float : left; padding:15px;}
+	li:first-child{border-radius:10px 0 0 10px;}
+	li:last-child {border-radius:0 10px 10px 0;}
+/*	li:nth-child(2n) {background-color:#F8E0F1;}
+	li:nth-child(2n+1) {background-color:#CEF6F5;}
+	/* 첫번째 : 빨강, 두번째 : 초록, 세번째 : 파랑....*/
+	li:nth-child(3n+1) {background-color:#FF0000;}
+	li:nth-child(3n+2) {background-color:#00FF00;}
+	li:nth-child(3n) {background-color:#0000FF;}
+</style>
+</head>
+<body>
+<ul>
+	<li>첫번째
+	<li>두번째
+	<li>세번째
+	<li>네번째
+	<li>다섯번째
+	<li>여섯번째
+	<li>일곱번째
+	<li>여덟번째
+	<li>아홉번째
+	<li>열번째
+</ul>
+</body>
+</html>
