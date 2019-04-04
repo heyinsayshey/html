@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- CDN 방식으로 css 파일 가져오기 : 인터넷에서 형식을 가져온다. -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>바구니 개수 구하기</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+	function calc(x,y){
+		//초기화 될때 정수값으로 다시 바뀐 것임. 
+		basketcnt.value = Math.ceil(x/y) + "개" ;
+//		basketcnt.value = (a-a%b)/b + (a%b==0?0:1);
+	}
+</script>
+</head>
+<body>
+<table class="w3-table-all">
+	<caption>바구니 수 계산하기</caption>
+	<tr class="w3-light-gray"><th>바구니당 사과의 개수</th>
+	<td><select id="apb">
+		<option value="5">5개</option>
+		<option value="10">10개</option>
+		<option value="15">15개</option>
+		<option value="20">20개</option>
+	</select></td></tr>
+	<tr><td>사과의 개수</td><td><input type="text" id="apple" style="text-align:right"></td></tr>
+	<tr><td colspan="2">
+	<input type="button" value="바구니 수 계산하기" onclick="calc(apple.value,apb.value)"
+	class="w3-button w3-block w3-teal w3-round"></td></tr>
+	<!-- 원래 같으면 document.form.n2.value 이런 식으로 불러야 되는데 id는 유일한 값이므로 apple.value로 바로 불러올 수 있다.-->
+	<tr><td>필요한 바구니 수</td>
+		<td><input type="text" id="basketcnt"></td></tr>
+</table>
+</body>
+</html>

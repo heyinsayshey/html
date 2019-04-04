@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>String 객체 함수 예제</title>
+</head>
+<body>
+<h3>String 객체의 주요 메서드</h3>
+<hr>
+<script type="text/javascript">
+	a = new String("Client-Side JavaScript Guide");
+	b = new String("Version 1.5");
+	document.write("a.charAt(5) : " + a.charAt(5) + "<br>");
+	document.write("a.charAt(100) : " + a.charAt(100) + "<br>");//없으면 빈 것을 리턴한다.
+	document.write("a.concat(b) : " + a.concat(b) + "<br>");//a+b 합침. 근데 a 자체는 안바뀜.
+	document.write("a.indexOf('S') : " + a.indexOf('S') + "<br>");
+	document.write("a.lastIndexOf('S') : " + a.lastIndexOf("S") + "<br>");
+	//slice(시작인덱스,종료인덱스) : 부분 문자열
+	//substr(시작인덱스, 문자의 개수) : 부분 문자열
+	//substring(시작인덱스, 종료인덱스) : 부분 문자열=>자바와 동일
+	document.write("a.slice(16) : " + a.slice(16) + "<br>");//16번 인덱스 이후 가져오기
+	document.write("a.slice(1,4) : " + a.slice(1,4) + "<br>");//(시작인덱스, 종료인덱스+1)
+	document.write("a.substr(17) : " + a.substr(17) + "<br>");//17번 인덱스 이후 가져오기
+	document.write("a.substr(1,6) : " + a.substr(1,6) + "<br>");
+	document.write("a.substring(1,6) : " + a.substring(1,6) + "<br>");
+	
+</script>
+<br><br><br>
+<h3>String 객체의 HTML 태그 관련 메서드</h3>
+<hr>
+<script>
+	v="여기";
+	document.write("자바스크립트".big().fontcolor("green") + "<br>");
+	document.write("자바스크립트".italics()+ "<br>");
+	document.write("자바스크립트".bold()+ "<br>");
+	document.write("자바스크립트".strike()+ "<br>");
+	document.write("자바스크립트".sup()+ "배우기 <br>");
+	document.write("자바스크립트".sub()+ "배우기 <br>");
+	//v에 하이퍼링크 걸어줌.
+	document.write("자바스크립트"+ v.link() + "클릭 <br>");
+</script>
+</body>
+</html>

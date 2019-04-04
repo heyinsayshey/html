@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--  반드시 복습할 것!!!!! -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>로그인</title>
+<script type="text/javascript">
+	function checkinput(f){
+		//f : name이 f인 form 객체 저장. form 객체 안에는 name이 id, pw인 두 개의 input 객체를 하위 객체로 가지고 있다. 
+		if(f.id.value == ''){
+			alert('아이디를 입력하세요.');
+			f.id.focus(); //포커스를 id 태그로 설정한다. 커서를 이쪽으로 옮겨준다.
+			return false;// onsubmit 이벤트가 false 값을 받는다. 
+		}
+		if(f.pw.value==''){
+			alert('비밀번호를 입력하세요.');
+			f.pw.focus();
+			return false;
+		}
+		if(f.id.value.length < 3){
+			alert('아이디는 3자 이상 입력하세요.');
+			f.id.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+<!-- onsubmit : submit 버튼이 눌러질 때 실행되는 함수.
+	 return false : onsubmit 이벤트 발생 취소. 안 눌러진 것처럼 만들어 다음 페이지로 넘어가지 않는다. 
+	 method="post" : id, pw의 파라미터 값을 http 전문의 body 부분에 저장 전송 
+	 					=> 파라미터 정보가 보이지 않는다. 보안성 좋다.
+	 method="get" : id, pw의 파라미터 값을 http 전문의 url 부분에 저장 전송
+	 					=> 파라미터 정보가 url 에 표시됨. 보안성 안좋음(기본값임, method 를 쓰지않으면 get 방식으로 전송된다.) -->
+<form name="f" method="post" onsubmit="return checkinput(this)" action="basketex1.html">
+	아이디:<input type="text" name="id"><br>
+	비밀번호:<input type="text" name="pw"><br>
+	<!-- submit 타입은 반드시 form 객체 안에 있어야 한다.  
+		 submit 버튼 : 클릭 시 해당 form 에 설정된 action 속성의 페이지로 이동함.
+		 			  action 속성이 없는 경우는 자신의 페이지로 자동 설정됨.-->
+	<input type="submit" value="로그인">
+</form>
+</body>
+</html>

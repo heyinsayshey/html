@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>새창을 열고 닫기</title>
+<script type="text/javascript">
+	var nw; //nw  변수 선언. 함수 외부에서 선언된 var 변수는 전역변수로 사용가능함.
+	function open_win(){
+		//open : 새로운 윈도우를 화면에 생성하는 함수. window 객체의 내장함수. window를 생략할 수 있다.
+		//open("url정보", "윈도우 이름", "option 들")
+		//nw : 새로운 윈도우창의 window 객체를 의미.
+		//var nw : open_win() 함수내부에서만 사용되는 지역변수로 선언됨. 다른 함수에서 사용할 수 없다.
+		//var 없이 바로 값이 설정되면, 밖에서도 사용할 수 있는 전역변수로 선언됨.(global variable);
+		nw=window.open("inputchkex1.html",'login',"width=300,height=100,menubar=no,top=200, left=200");
+		
+		n1 = num1.value;
+		n2 = num2.value;
+		num=eval(n1+"+"+n2);
+		result=num;
+		
+		nw.document.write("새로 열려진 윈도우의 문서 객체입니다. <br>");
+		nw.document.write("openex1.html 페이지에서 open 함수로 생성되었습니다.<br>");
+		nw.document.write(n1+"+"+n2+"="+result);
+	}
+	function close_win(){
+		nw.close();//close : window 객체의 내장함수. nw 가 window 객체이므로 사용할 수 있다. 
+	}
+	
+</script>
+</head>
+<body>
+<a href="javascript:open_win()">새창열기</a><br>
+<a href="javascript:close_win()">새창닫기</a><br>
+<input type="text" id="num1" size="5">+
+<input type="text" id="num2" size="5">
+
+</body>
+</html>

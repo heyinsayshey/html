@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 선택하기</title>
+<script type="text/javascript">
+	function drawImg(sel,img){//sel : select 태그,img : img 태그
+		img.src="img/" + sel.value;
+	}
+</script>
+</head>
+<body>
+<form name="f">
+<table>
+	<tr><td>
+		<!-- onchange : select, checkbox 에서 선택이 변경될 때 발생되는 이벤트 
+			 this : select 객체 
+			 document.img : 이미지는 document의 바로 하위 자손이기 때문에 f를 쓰지 않고도 사용할 수 있다.
+			 				=> 아래의 img 태그 선택
+			 -->
+		<select name="s" onchange="drawImg(this,document.img)">
+			<option value="strawberry.gif">딸기</option>
+			<option value="banana.gif">바나나</option>
+			<option value="apple.gif">사과</option>
+		</select>
+	</td>
+	<td><img name="img" src=""></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

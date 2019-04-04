@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Text to Speech(TTS)</title>
+<script type="text/javascript">
+	var msg=new SpeechSynthesisUtterance();//TTS 기능 저장 객체 생성
+	function setlang(t){
+		msg.lang=t;//TTS 객체에 언어 설정
+	}
+	function ttsTest(){
+		//class: 그룹 의미. 같은 속성을 가진 태그가 여러개 존재할 수 있음.
+		//id : 유일한 속성. 
+		msg.text=intext.value;//id 속성의 값이 intext 태그 선택.
+		speechSynthesis.speak(msg);//읽기
+	}
+</script>
+</head>
+<body>
+<textarea rows="10" cols="100" id="intext">안녕하세요.</textarea>
+<input type="button" onclick="setlang('ko_KR');ttsTest()" value="읽기">
+<br>
+</body>
+</html>

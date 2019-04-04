@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- 
+	1. 객체 생성하기.
+	2. 태그 위치 설정하기
+		
+ -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>글자잡기게임</title>
+<script type="text/javascript">
+	function nextRandomInteger(limit){
+		return Math.round(Math.random() * limit);//0~700/500 사이의 임의의 값
+	}
+	function randomSpeed(maxSpeed){
+		//0~2의 값을 가짐.
+		return Math.random()*maxSpeed-Math.random()*maxSpeed;
+	}
+	var canvasWidth=700;
+	var canvasHeight=500;
+	var total = 10;
+	//객체 생성하기
+	//movingText 객체에는 x,y,vX,vY,body 5개의 멤버 변수를 가지고 있다.
+	function movingText(){ //객체의 생성자, 객체의 안에 this.x 가 들어가면 생성자임.
+		//this.x : 멤버변수 선언
+		this.x=nextRandomInteger(canvasWidth);//0~700
+		this.y=nextRandomInteger(canvasHeight);//0~500
+		
+		this.vX=randomSpeed(2);//증감값 설정. -2~2사이의 값
+		this.vY=randomSpeed(2);
+		//this.body : h1 태그 생성 저장 
+		this.body=document.createElement("h1");//body : <h1>A</h1>
+		this.body.innerHTML = "A";
+		//setAttribute : 속성을 등록하기
+		//<h1 style="background-color:white;">A</h1>
+		this.body.setAttribute("style", "background-color:white");
+		//<h1 style="background-color:white; position:absolute;">A</h1>
+		this.body.style.position="absolute";
+		var text = this.body;
+		this.body.onclick = function(){
+			--total;
+			alert('남은 문자 수 : ' + total);
+			text.innerHTML = "B";
+		}
+		//<h1 style="background-color:white; position:absolute;">A</h1>인 태그가 10번 만들어진다. 
+		document.body.appendChild(this.body);
+	}
+	//movingText.prototype : movingText 객체의 멤버 메서드를 정의
+	//move 멤버메서드를 정의.
+	movingText.prototype.move=function(){
+		if(this.body.innerHTML == 'B') return;
+		if(this.x < 0 || this.x > canvasWidth) this.vX *= -1; 
+		if(this.y < 0 || this.y > canvasHeight) this.vY *= -1;
+		//this.x=10, this.vX=-1;
+		this.x += this.vX;//10 + (-1) => 9 + (-1) => .... => -1 + (1)
+		this.y += this.vY;
+		this.body.style.left = this.x + "px";
+		this.body.style.top = this.y + "px";
+	}
+	//윈도우 창이 처음 시작하면 아래의 함수가 실행된다. on~ : 이벤트 처리
+	//onload 이벤트 핸들러 등록. 
+	window.onload = function(){
+		var movingTexts = []; //배열객체 선언, movingText 객체 10개 저장 예정
+		for(var i=0;i<10;i++){//10번 반복
+			//new movingText() : 객체 생성하기.
+			movingTexts.push(new movingText());//movingText 객체 배열에 저장
+		}
+		//setInterval(function,밀리초) : 밀리초마다 function을 호출함
+		//1000/60 : 60분의 1초.
+		var game= setInterval(function(){
+			//movingTexts : 10개의 객체를 저장하고 있는 배열
+			for(var i in movingTexts){
+				if(total < 4) {
+					alert("게임 종료");
+					clearInterval(game);//setInterval 을 취소함. move() 함수가 멈춘다. 
+					return;
+				}
+				//movingTexts[i] : movingText 객체 한개
+				//movingTexts[i].move() : movingText객체 한 개를 move()함수를 돌린다.
+				movingTexts[i].move();
+			}
+		},1000/60);
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
