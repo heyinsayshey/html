@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Data 객체 예제</title>
+<script type="text/javascript">
+	now=new Date();
+</script>
+</head>
+<body>
+<table><tr><td>
+	<script type="text/javascript">
+	document.write(now+"<br><br>");
+	document.write(now.toGMTString()+"<br><br>");//영국 그리니치천문대 시간, 우리나라랑 9시간 차이남
+	document.write(now.toLocaleString()+"<br><br>");
+	document.write(now.toString()+"<br><br><hr>");
+	document.write("년도:" + now.getYear()+"<br>");
+	document.write("년도:" + now.getFullYear()+"<br>");
+	document.write("월(0~11):" + now.getMonth()+"<br>");
+	document.write("일:" + now.getDate()+"<br>");
+	document.write("요일(0:일요일~6:토요일):" + now.getDay()+"<br>");
+	document.write("시간:" + now.getHours()+"<br>");
+	document.write("분:" + now.getMinutes()+"<br>");
+	document.write("초:" + now.getSeconds()+"<br>");
+	document.write("getTime():1970년부터 지금까지 " + now.getTime() + "msec <br><hr>");
+	now.setTime(now.getTime() + (1000*60*60*24));//현재 시간의 다음날로 설정한다. 1000*60 : 한시간 뒤 , *60*24:하루 뒤
+	document.write("다음일:"+now+"<br>");
+	</script>
+
+</td></tr>
+
+</table>
+</body>
+</html>

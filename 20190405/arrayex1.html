@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>도시 선택하기</title>
+<script type="text/javascript">
+	//sies = 1차원 배열
+	sies = new Array(new Option("서울시"), new Option("경기도"), new Option("충청남도"), new Option("부산광역시"));
+	//gues = 2차원 배열
+	gues = new Array();
+	for(var i=0;i<4;i++){
+		gues[i] = new Array();
+	}
+	names=[["강남구","서초구","구로구","금천구"],["이천시","광주시","부천구","안양구"],["천안시","유성시","아산시","논산시"],["강서구","해운대구","영도구","동구"]];
+	for(var i=0;i<names.length;i++){
+		for(var j=0;j<names[i].length;j++){
+			gues[i][j] = new Option(names[i][j]);
+		}
+	}
+	//로드 할 때 실행되는 함수
+	window.onload = function(){
+		for(i=0;i<sies.length;i++){
+			document.f.si.options = null;
+			document.f.si.options[i] = sies[i];
+		}	
+		for(i=0;i<gues[0].length;i++){//처음 로드될 때 서울시의 구들이 로드되도록 만든다.
+			document.f.gu.options = null;//현재 상태의 option 태그 제거
+			document.f.gu.options[i] = gues[0][i];
+		}	
+	}
+	//f.si.selectedIndex : si select 태그에서 선택된 것의 index
+	function selectgu(f){
+		for(var i=0;i<gues[f.si.selectedIndex].length;i++){
+			document.f.gu.options[i] = gues[f.si.selectedIndex][i];
+		}
+	}
+</script>
+</head>
+<body>
+<!-- this.form : si 태그가 속한 form 객체 -->
+<form name="f">
+	<select name="si" onchange="selectgu(this.form)"></select><!-- 여기서는 옵션을 넣을 수 있는 구조만 있는 것임. -->
+	<select name="gu"></select>
+</form>
+</body>
+</html>

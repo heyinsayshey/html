@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>구구단 출력하기</title>
+<style type="text/css">
+	table {width:100%; border-collapse:collapse;}
+	th,td{border:3px solid #bcbcbc; text-align:center; padding:8px;}
+	th{background-color: #e2e2e2; color:#111111;}
+	td{background-color: #f2f2f2;}
+	caption{color:#111111; font-size:20px; background-color: #ffffff;}
+</style>
+<script type="text/javascript">
+
+	function print1(){
+		var gutable = "<table><caption>세로출력</caption>";
+		for(var i=2;i<=9;i++){
+			gutable += "<tr><td style='background-color:blue; color:white;'>"+i+"단</td></tr>";
+			for(var j=1;j<=9;j++){
+				gutable += "<tr><td>"+i+"*"+j+"="+(i*j)+"</td></tr>";
+			}
+		}
+		gugudan.innerHTML = gutable;
+	}
+	function print2(){
+		var gutable = "<table><caption>가로출력</caption><tr>";
+		for(var i=2;i<=9;i++){
+			if(i==9){
+				gutable += "<td style='background-color:blue; color:white;'>"+i+"단</td></tr>";
+			}
+			else gutable += "<td style='background-color:blue; color:white;'>"+i+"단</td>";
+		}
+		for(var i=2;i<=9;i++){
+			gutable += "<tr>"
+			for(var j=2;j<=9;j++){
+				if(j==9){
+					gutable += "<td>"+j+"*"+i+"="+(i*j)+"</td></tr>";
+				}
+				else gutable += "<td>"+j+"*"+i+"="+(i*j)+"</td>";
+			}
+		}
+		gugudan.innerHTML = gutable;
+	}
+	
+	function print3(){
+		var gutable = "<table><caption>2단출력</caption><tr>";
+		for(var i=2;i<=5;i++){
+			if(i==5){
+				gutable += "<td style='background-color:blue; color:white;'>"+i+"단</td></tr>";
+			}
+			else gutable += "<td style='background-color:blue; color:white;'>"+i+"단</td>";
+		}
+		for(var i=2;i<=9;i++){
+			gutable+="<tr>";
+			for(var j=2;j<=5;j++){
+				if(j==5){
+					gutable += "<td>"+j+"*"+i+"="+(i*j)+"</td></tr>";
+				}
+				else gutable += "<td>"+j+"*"+i+"="+(i*j)+"</td>";
+			}
+		}
+		gutable += "<tr>";
+		for(var i=6;i<=9;i++){
+			if(i==9){
+				gutable += "<td style='background-color:blue; color:white;'>"+i+"단</td></tr>";
+			}
+			else gutable += "<td style='background-color:blue; color:white;'>"+i+"단</td>";
+		}
+		for(var i=2;i<=9;i++){
+			gutable+="<tr>";
+			for(var j=6;j<=9;j++){
+				if(j==9){
+					gutable += "<td>"+j+"*"+i+"="+(i*j)+"</td></tr>";
+				}
+				else gutable += "<td>"+j+"*"+i+"="+(i*j)+"</td>";
+			}
+		}
+		
+		gugudan.innerHTML = gutable;
+	}
+	
+</script>
+</head>
+<body>
+<input type="button" value="세로출력" onclick="print1()">
+<input type="button" value="가로출력" onclick="print2()">
+<input type="button" value="2단출력" onclick="print3()">
+<div id="gugudan">
+	
+</div>
+</body>
+</html>

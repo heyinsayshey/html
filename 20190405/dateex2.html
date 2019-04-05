@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>달력 출력하기</title>
+<link rel="stylesheet" href="http://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+	function show_cal(){
+		var year = parseInt(y.value);//정수형 2019
+		var mon = parseInt(m.value);
+		cal1 = new Date(year,mon-1,1);//선택한 달의 첫날
+		cal2 = new Date(year,mon,1);//선택한 다음 달의 첫날
+		//cal2.getTime() : 1970년 이후부터 cal2날짜까지의 시간을 밀리초로 가짐.
+		//cal2.getTime()-(1000*60*60*24) : 하루의 밀리초를 빼줌
+		/* 
+			1초 : 1000 밀리초
+			1분 : 1000 밀리초 *60
+			1시간 : 1000밀리초 *60*60
+			1일 :1000밀리초*60*60*24
+		*/
+		cal2.setTime(cal2.getTime()-(1000*60*60*24));//선택한 달의 마지막날
+		
+		var html = "<table class='w3-table-all'><caption>"+year+"년"+mon +"월</caption>";
+		html += "<tr class='w3-blue'><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>";
+		var fday = cal1.getDay();
+		var lday = cal2.getDate();
+		var date = 0;
+		
+		for(var i=0;i<6;i++){//i : 주 , j : 요일
+			html += "<tr>";
+			for(var j=0;j<7;j++){
+				if(j==0) html += "<td style='color:red;'>";
+				else if(j==6) html+= "<td style='color:blue;'>";
+				else html+="<td>";
+				if(i==0){//첫주인 경우
+					if(fday <= j){
+						html+=++date;
+					}
+					else {
+						html += "&nbsp;";
+					}
+				}else {//그 외의 주
+					if(lday>date){
+						html+= ++date;
+					}
+					else{
+						html += "&nbsp;";
+					}
+				}
+				html+="</td>";
+			}
+			html +="</tr>";
+			if(date>lday) break;
+		}
+		
+		html += "</table>";
+		cal.innerHTML = html;//innerHTML : 해당 문자열을 html 파일에 갖다붙인다.
+		
+	}
+</script>
+</head>
+<body>
+<select id="y">
+	<option>2015</option><option>2016</option><option>2017</option>
+	<option>2018</option><option>2019</option><option>2020</option>
+</select>
+<select id="m">
+	<option value="1">1월</option><option value="2">2월</option>
+	<option value="3">3월</option><option value="4">4월</option>
+	<option value="5">5월</option><option value="6">6월</option>
+	<option value="7">7월</option><option value="8">8월</option>
+	<option value="9">9월</option><option value="10">10월</option>
+	<option value="11">11월</option><option value="12">12월</option>
+</select>
+<input type="button" value="달력보기" onclick="show_cal()"> 
+<br><span id="cal"></span>
+</body>
+</html>

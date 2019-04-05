@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>점수 테이블 생성하기</title>
+<style type="text/css">
+	table {width:100%; border-collapse:collapse;}
+	th{border:1px solid #bcbcbc; text-align:center; padding:8px; background-color: blue;
+		color:white;}
+	td{border:1px solid #bcbcbc; text-align:center; padding:8px;}
+</style>
+<script type="text/javascript">
+	var table = "<table><tr><th>이름</th><th>국어점수</th><th>영어점수</th>"
+				+"<th>수학점수</th><th>평균</th><th></th></tr>";
+				
+	function add_record(){
+		var name = document.f.name.value;
+		var kor = parseInt(document.f.kor.value);
+		var eng = parseInt(document.f.eng.value);
+		var math = parseInt(document.f.math.value);
+		var avg = (kor+eng+math)/3;
+				
+		plus_table = "<form name='f'><tr id='"+name+"'><td>"+name+"</td><td>"+kor+"</td><td>"+eng+
+					"</td><td>"+math+"</td><td>"+avg+"</td><td>"+
+					"<input type='submit' value='delete' onclick='del_record()' style='float:center;'>"+
+					"</td></tr></form>"
+		table += plus_table;			
+		stable.innerHTML += table;
+	}
+	
+	function del_record(){
+		
+	}
+	
+	
+</script>
+</head>
+<body>
+<form name="f">
+이름 : <input type="text" id="name">
+국어 : <input type="text" id="kor">
+영어 : <input type="text" id="eng">
+수학 : <input type="text" id="math">
+<input type="submit" value="제출" onclick="add_record()">
+</form>
+<div id="stable"></div>
+</body>
+</html>
